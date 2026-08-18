@@ -1,0 +1,335 @@
+/* --- CSS Reset & Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --accent-blue: #00d2ff;
+    --accent-green: #00e676;
+    --text-main: #f0f6fc;
+    --text-muted: #8b949e;
+    --border-color: #30363d;
+    --big-color: blue;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            #6a00ff,
+            transparent 30%
+        ),
+         radial-gradient(
+            circle at 70% 45%,
+            #1de913d6,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            #ff9500,
+            transparent 30%
+        ),
+          radial-gradient(
+            circle at 40% 80%,
+            #f8f8f9,
+            transparent 30%
+        ),
+        #050505;
+
+    background-size: 200% 200%;
+
+    animation: glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Container positioned behind all text & cards */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; /* Keeps it behind content */
+  pointer-events: none; /* Prevents interference with clicks */
+  background-color: var(--border-color); /* Dark base theme */
+}
+
+/* --- Navigation --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 8%;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    -webkit-backgroundclip: text;
+    -webkit-text-fill-color: whitesmoke;
+    animation: fadeInDown 1s ease forward;
+}
+
+.hero p {
+    font-size: 1.7rem;
+    color: var white;
+    max-width: 650px;
+    margin-bottom: 4rem;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(45deg, #00d2ff, #0072ff);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+}
+
+/* --- Showcase Section --- */
+.showcase {
+    padding: 3rem 8%;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.showcase-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    height: 320px;
+}
+
+.showcase-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.showcase-card:hover img {
+    transform: scale(1.08);
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap { background:  #131313; color: rgb(88, 4, 245); padding: .9rem 0; overflow: hidden; }
+.marquee-track {
+  display: flex; width: max-content;
+  animation: marquee 18s linear infinite;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem; font-weight: 800; letter-spacing: .05em;
+}
+.marquee-track span { padding: 0 2.5rem; }
+.marquee-track .dot { color: var(--paper); font-size: 1.5rem; line-height: 1.8rem; object-position: center;}
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+.showcase-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(13, 17, 23, 0.95), rgba(13, 17, 23, 0.1));
+    padding: 1.8rem 1.5rem 1.2rem;
+}
+
+.showcase-overlay h3 {
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.showcase-overlay p {
+    color: var(--text-main);
+    font-size: 0.88rem;
+}
+
+/* --- Services Section --- */
+.services {
+    padding: 4rem 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: white;
+    font-size: 0.95rem;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: black; color : black;
+  padding: 2.5rem 6%; display: flex;
+  justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem; font-size: .85rem;
+}
+
+footer .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: white; }
+footer .logo span {
+  color: var blue;
+  margin-left: 5px;
+  font-size: 1.5rem;
+}
+
+span {
+    font-size: 1rem;
+    color: white;
+}
+
+footer a { color: white; text-decoration: none; transition: color .25s; font-size: 1rem;}
+footer a:hover { color: rgb(242, 8, 8); }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    .nav-links { display: none; }
+}
